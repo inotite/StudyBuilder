@@ -1,0 +1,26 @@
+.MENU_COLOR {
+   background-color: #232176;
+   color: #e5e1e6;
+   font-size: large;
+   border: 0px;
+}
+.MENU_GAP {
+   margin-right: 20px;
+}
+
+#study-type {
+   margin-left: 65px;
+}
+
+@media (max-width: 1024px) {
+   .MENU_COLOR {
+      font-size: medium;
+   }
+   .MENU_GAP {
+      margin-right: 10px;
+   }
+}
+
+button[aria-expanded='true'] button {
+   background-color: red;
+}

@@ -1,0 +1,64 @@
+<ng-container [formGroup]="questionnaireNameForm">
+   <div class="container-fluid remove-margin-padding">
+      <div class="row">
+         <div class="col-sm-6 ">
+            <label i18n for="internalQuestionnaireName"
+               ><span class="asterik"></span>What is the Internal questionnaire name</label
+            >
+            <mat-form-field floatLabel="always" appearance="outline">
+               <input
+                  matInput
+                  id="internalQuestionnaireName"
+                  name="internalQuestionnaireName"
+                  placeholder="Max 60 Characters"
+                  formControlName="internalQuestionnaireName"
+                  maxlength="60"
+                  i18n
+               />
+            </mat-form-field>
+            <mat-error
+               *ngIf="
+                  !isInternalNameUnique(
+                     questionnaireNameForm?.controls['internalQuestionnaireName']
+                  )
+               "
+            >
+               Internal name must be unique
+            </mat-error>
+         </div>
+         <div class="col-sm-5 remove-right-margin-padding">
+            <label i18n for="displayQuestionnaireName"
+               ><span class="asterik"></span>What is the questionnaire display name</label
+            >
+            <mat-form-field floatLabel="always" appearance="outline">
+               <input
+                  matInput
+                  id="displayQuestionnaireName"
+                  name="displayQuestionnaireName"
+                  placeholder="Max 60 Characters"
+                  formControlName="displayQuestionnaireName"
+                  maxlength="60"
+                  i18n
+               />
+            </mat-form-field>
+         </div>
+         <div class="col-sm-1 remove-left-margin-padding">
+            <img
+               src="../../../assets/GOOGLE_translate_icon.svg"
+               id="richTextEditorIcon"
+            />
+         </div>
+      </div>
+   </div>
+   <div class="row justify-content-center align-items-center">
+      <label i18n>Allow Blinded users access to view answers</label>
+      <mat-slide-toggle
+         id="blindedCanViewAnswers"
+         formControlName="blindedCanViewAnswers"
+         ngDefaultControl
+         i18n
+      >
+      </mat-slide-toggle>
+      <mat-divider></mat-divider>
+   </div>
+</ng-container>

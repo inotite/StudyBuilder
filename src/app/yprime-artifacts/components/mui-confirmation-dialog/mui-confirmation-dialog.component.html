@@ -1,0 +1,15 @@
+<h2 *ngIf="displayTitle" matDialogTitle>{{ settings?.title }}</h2>
+<mat-dialog-content>
+  <p>{{ settings?.message }}</p>
+</mat-dialog-content>
+<mat-dialog-actions class="confirmation-actions">
+  <span *ngIf="settings?.noButtonTitle">
+      <button mat-flat-button color="accent" mat-dialog-close>
+        {{ settings?.noButtonTitle }}
+      </button>
+  </span>
+  <span class="yes-button" *ngIf="settings?.yesButtonTitle"> 
+    <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
+    <button mat-flat-button color="primary" [mat-dialog-close]="true">{{ settings?.yesButtonTitle }}</button>  
+  </span>
+</mat-dialog-actions>

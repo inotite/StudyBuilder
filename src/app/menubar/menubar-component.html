@@ -1,0 +1,62 @@
+<nav
+   *ngIf="inChildPage"
+   id="menubar"
+   class="navbar navbar-expand-md MENU_COLOR"
+>
+   <a class="navbar-brand abs" [routerLink]="['']">
+      <img id="yPrime-nav-logo" src="../assets/{{ iconFile }}" height="32" />
+   </a>
+   <a class="navbar-brand abs MENU_COLOR" [routerLink]="['']">
+      <i class="{{ homeIcon }}">&nbsp;</i>
+   </a>
+   <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#collapsingNavbar"
+   >
+      <span class="navbar-toggler-icon"></span>
+   </button>
+   <div class="navbar-collapse collapse" id="collapsingNavbar">
+      <ul class="navbar-nav">
+         <li *ngFor="let item of menuArray" class="nav-item MENU_GAP">
+            <div class="d-inline-block" ngbDropdown #myDrop="ngbDropdown">
+               <button
+                  i18n
+                  class="nav-link MENU_COLOR {{ item.text | dashCase }}"
+                  id="{{ item.id }}"
+                  ngbDropdownAnchor
+                  (focus)="myDrop.open()"
+               >
+                  {{ item.text }}
+               </button>
+               <div ngbDropdownMenu aria-labelledby="dropdownManual">
+                  <button
+                     *ngFor="let subr of item.subMenu"
+                     class="dropdown-item MENU_COLOR {{ subr.text | dashCase }}"
+                     [routerLink]="[subr.data]"
+                  >
+                     {{ subr.text }}
+                  </button>
+               </div>
+            </div>
+         </li>
+         <li class="nav-item" id="study-type">
+            <b i18n class="nav-link"
+               >Study Type: &nbsp;
+               <span id="study-type">{{ studyType }}</span>
+            </b>
+         </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+         <li class="nav-item">
+            <a class="nav-link MENU_COLOR" [routerLink]="['userinfo']">
+               <i class="{{ userInfoIcon }}">&nbsp;</i>
+            </a>
+         </li>
+      </ul>
+   </div>
+</nav>
+
+<app-panel-title *ngIf="inChildPage"></app-panel-title>
+    

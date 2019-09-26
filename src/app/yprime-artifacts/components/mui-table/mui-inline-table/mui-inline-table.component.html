@@ -1,0 +1,375 @@
+<div *ngIf="displayedColumns">  
+  <div class="grid-overlay" *ngIf="showSpinner || notificationMessage !== ''">
+      <div class="grid-overlay-msg"> 
+        <div *ngIf="showSpinner">  
+            <mat-spinner [mode] = "'indeterminate'"></mat-spinner>
+        </div>
+
+        <div class="message" *ngIf="notificationMessage">  
+            {{notificationMessage}}
+        </div>
+      </div>
+  </div>
+
+  <div class="req-message"><span class="asterik"></span><span>= MANDATORY</span></div>
+
+  <div class="table-header table-border {{pageName}}">
+    <!-- Header and Row Declarations -->
+    <div class="mat-header-row addRowHeader">
+        <ng-container *ngFor="let column of columnNames">
+            <span [ngClass]="{'edit-mode': (editId !== '')}" class="headerCol {{column.id}}" 
+                *ngIf="(column.canBeAdded || column.id === 'actionPanel')">
+                <label class="colName headerLabel {{column.id}}" for="{{column.id}}" 
+                    *ngIf="column.canBeAdded" i18n>
+                    <span *ngIf="column.isRequired" class="asterik s16"></span>{{column.columnDisplayName}}<span *ngIf="column.helpText" title="{{column.helpText}}">
+                        <mat-icon class="material-icons-outlined info-cell">info</mat-icon>
+                    </span>
+                </label>
+            </span>
+        </ng-container>
+    </div>
+    <div class="mat-header-row header-group-row">
+        <form #addForm="ngForm" class="addForm" *ngIf="addRowRequired" novalidate>
+            <ng-container *ngFor="let column of columnNames">
+                <span class="headerCol {{column.id}}" *ngIf="(column.canBeAdded || column.id === 'actionPanel')">
+                    <span [ngClass]="{'edit-mode': (editId !== '')}">
+                        <span *ngIf="column.MuiTableControlType === columnControlTypeEnum.Text">
+                            <mat-form-field floatLabel="always" appearance="outline" 
+                                [style.width.px] = "column.width">                       
+                                <input [required] = "column.isRequired" matInput placeholder="Max {{column.maxLength}} Characters"
+                                    [disabled]="(editId !== '')"
+                                    maxlength="{{column.maxLength}}" autocomplete="off"
+                                    name="{{column.id}}"
+                                    id="{{column.id}}"
+                                    [(ngModel)]="addRow[column.id]"/>
+                            </mat-form-field>
+                        </span>
+
+                        <span *ngIf="column.MuiTableControlType === columnControlTypeEnum.Label" id="{{column.id}}">
+                            <span *ngIf="column.pipeForDisplay,else default_label">
+                                {{addRow[column.id] | pipeHelper:column.pipeForDisplay}}
+                            </span>
+                            <ng-template #default_label>{{addRow[column.id]}}</ng-template>
+                        </span>
+
+                        <span *ngIf="column.MuiTableControlType === columnControlTypeEnum.Slider" class="slider">
+                            <mat-slide-toggle [disabled]="(editId !== '')" 
+                                (change)="onSliderChange($event, column, addRow)"
+                                [checked]="addRow[column.id]" 
+                                name="{{column.id}}"
+                                id="{{column.id}}">
+                            </mat-slide-toggle>
+                        </span>
+
+                        <span *ngIf="column.MuiTableControlType === columnControlTypeEnum.SingleDropdown && 
+                            column.columnDataSource">
+                            <mat-form-field floatLabel="always" appearance="outline" 
+                                [style.width.px] = "column.width">
+                                <mat-select [required] = "column.isRequired" 
+                                    placeholder="Please Select"
+                                    [(ngModel)]="addRow[column.columnDataSource.columnId]" 
+                                    (ngModelChange)="updateDropdown($event, true, column.columnDataSource)"
+                                    [disabled]="(editId !== '')"
+                                    name="{{column.id}}"
+                                    id="{{column.id}}">
+                                    <mat-option [value]="item[column.columnDataSource.idKeyName]" 
+                                        *ngFor="let item of (column.columnDataSource.syncOnAction) ? 
+                                            dynamicData[column.columnDataSource.syncSourceIndex].data : 
+                                            column.columnDataSource.staticDataSource | async">
+                                        {{item[column.columnDataSource.textKeyName]}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </span>
+
+                        <span *ngIf= "column.MuiTableControlType === columnControlTypeEnum.MultiChoiceDropdown">
+                            <mat-form-field floatLabel="always" appearance="outline" 
+                                [style.width.px] = "column.width">
+                                <mat-select multiple [required] = "column.isRequired"
+                                    placeholder="Please Select"
+                                    [compareWith]="compareObjects"
+                                    [(ngModel)]="addRow[column.columnDataSource.columnId]" 
+                                    id="{{column.id}}"
+                                    name="{{column.columnDataSource.columnId}}"
+                                    #multiSelect="ngModel">
+                                    <mat-select-trigger>
+                                        {{addRow[column.columnDataSource.columnId]?.length > 0
+                                            ? addRow[column.columnDataSource.columnId][0][column.columnDataSource.textKeyName] : ''}}
+                                        <span *ngIf="addRow[column.columnDataSource.columnId]?.length > 1" 
+                                            class="additional-selection">
+                                            (+{{addRow[column.columnDataSource.columnId]?.length - 1}} {{addRow[column.columnDataSource.columnId]?.length === 2 ? 
+                                            'More' : 'More'}})
+                                        </span>
+                                    </mat-select-trigger>
+                                    <mat-option value="" 
+                                        [id]="selectAllId"
+                                        (click)="toggleSelectAll(multiSelect, column.columnDataSource, false)">
+                                        Select All
+                                    </mat-option>
+                                    <mat-option [value]="deselectAllObj" 
+                                        class="hide-elem"
+                                        [id]="deselectAllId"
+                                        (click)="deselectAll(multiSelect)">
+                                        Deselect All
+                                    </mat-option>
+                                    <mat-option [value]="item"
+                                        *ngFor="let item of (column.columnDataSource.syncOnAction) ? 
+                                            dynamicData[column.columnDataSource.syncSourceIndex].data : 
+                                            column.columnDataSource.staticDataSource | async" 
+                                        (click)="toggleSelectAll(multiSelect, column.columnDataSource, true)">
+                                        {{item[column.columnDataSource.textKeyName]}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </span>
+
+                        <span *ngIf="column.MuiTableControlType === columnControlTypeEnum.FileUpload" class="file-upload">
+                                <app-file-upload
+                                id="{{column.id}}"
+                                [fileNotSelected]="fileNotSelected"
+                                (fileSelectAction)="onFileChanged($event, column.id)" 
+                                ></app-file-upload>
+                        </span>
+                    
+                        <!-- ADD FORM BUTTON PANEL -->
+                        <span class="ActionPanelEdit" *ngIf="column.id === 'actionPanel'" 
+                            (click)="$event.stopPropagation()">          
+                            <span class="cancelButton">
+                                <button type="button" mat-icon-button
+                                    [disabled]="(editId !== '')"
+                                    (click)="cancelAction(false)"
+                                    i18n>
+                                    <mat-icon class="material-icons-outlined">cancel</mat-icon>
+                                </button>
+                            </span>
+                            <span class="addButton">
+                                <button type="submit" 
+                                    id="addButton"
+                                    mat-icon-button 
+                                    [disabled]="(editId !== '')"
+                                    (click)="onAddAction()"
+                                    i18n>
+                                    <mat-icon>add_circle</mat-icon>
+                                </button>
+                            </span>                              
+                            <div *ngIf="showErrorMessage && (editId === '') && !isFileError">
+                                <label i18n class="showErrorMessage">
+                                    <span><B>Alert: Please address all highlighted fields</B></span>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </span>    
+            </ng-container> 
+        </form>
+    </div>
+  </div>
+
+  <div class="table-header">      
+    <mat-table class="inline-table {{pageName}}" [dataSource]="dataSource" matSort 
+        matSortActive="{{(this.displayedColumns) ? this.displayedColumns[0] : ''}}" 
+        matSortDirection="asc" matSortDisableClear>
+        <!-- User name Definition -->
+        <ng-container cdkColumnDef="{{column.id}}" *ngFor="let column of columnNames">
+            <mat-header-cell *cdkHeaderCellDef> 
+                <div class="displayName" 
+                    mat-sort-header
+                    [ngClass]="{'edit-mode': (editId !== '')}">
+                    {{column.columnDisplayName}}
+                    <span *ngIf="column.id !== 'actionPanel' && column.helpText" title="{{column.helpText}}">
+                        <mat-icon class="material-icons-outlined info-cell">info</mat-icon>
+                    </span>
+                </div>
+            </mat-header-cell>
+
+            <mat-cell *cdkCellDef="let row"> 
+                <div class="ActionPanelEdit" (click)="$event.stopPropagation()"
+                        *ngIf="column.id === 'actionPanel' && row[keyName] === editId">                
+                    <span class="ActionPanelCancelButton">
+                        <button type="button" mat-icon-button
+                            (click)="cancelAction(true)"
+                            i18n>
+                            <mat-icon class="material-icons-outlined">highlight_off</mat-icon>
+                        </button>
+                    </span>
+                    <span class="ActionPanelSaveButton">
+                        <button type="button" mat-icon-button
+                            (click)="saveAction()"
+                            i18n>
+                            <mat-icon>check_circle</mat-icon>
+                        </button>
+                    </span>
+                    <div *ngIf="showErrorMessage && row[keyName] === editId">
+                        <label i18n class="showErrorMessage">
+                            <span><B>Alert: Please address all highlighted fields</B></span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="ActionPanelView" (click)="$event.stopPropagation()"
+                    *ngIf="column.id === 'actionPanel' && (row[keyName] !== editId)">                
+                    <span class="ActionPanelEditButton">
+                        <button type="button"
+                            [title]="((row['actionPanel'] !== undefined) &&
+                            (row['actionPanel'] === false || row['actionPanel'].canUpdate === false)) ? 
+                            (column.helpTextColumnRef) ? row[column.helpTextColumnRef] + ' ' + column.helpText : column.helpText : ''"
+                            mat-icon-button [disabled]="(editId !== '') || 
+                                (column.MuiTableControlType === columnControlTypeEnum.DataDrivenActionPanel && 
+                                (row['actionPanel'] !== undefined) &&
+                                (row['actionPanel'] === false || row['actionPanel'].canUpdate === false))"
+                            (click)="onEditAction(row)" i18n>
+                            <mat-icon>create</mat-icon>
+                        </button>
+                    </span>
+                    <span class="ActionPanelDeleteButton">
+                        <button type="button" mat-icon-button
+                            [title]="((row['actionPanel'] !== undefined) &&
+                            (row['actionPanel'] === false || row['actionPanel'].canDelete === false)) ? 
+                                row['actionPanel']?.acknowledge ? 
+                                column.acknowledgementText :
+                                    (column.helpTextColumnRef) ? 
+                                    row[column.helpTextColumnRef] + ' ' + column.helpText : 
+                                    column.helpText : 
+                                ''"
+                            [disabled]="(editId !== '') ||
+                                (column.MuiTableControlType === columnControlTypeEnum.DataDrivenActionPanel && 
+                                (row['actionPanel'] !== undefined) &&
+                                (row['actionPanel'] === false || row['actionPanel'].canDelete === false))"
+                            (click)="onDeleteAction(row[keyName])" 
+                            i18n>
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                    </span>
+                </div>
+
+                <div (click)="$event.stopPropagation()" *ngIf="column.id !== 'actionPanel'">
+                    <span [ngClass]="{'edit-mode': editId !== '' && editId !== row[keyName]}" 
+                        *ngIf="!column.canBeEdited || row[keyName] !== editId || !column.MuiTableControlType">
+                            <ng-container [ngSwitch]="column.MuiTableControlType">
+                                <span *ngSwitchCase="columnControlTypeEnum.Slider" class="slider">
+                                    <mat-slide-toggle [checked]="row[column.id]" 
+                                        name="{{column.id}}" [disabled]="true">
+                                    </mat-slide-toggle>
+                                </span>
+                                <span *ngSwitchCase="columnControlTypeEnum.MultiChoiceDropdown">
+                                    <app-expandable-list 
+                                        [columnCount]="2"
+                                        [items]="getListItem(row[column.columnDataSource.columnId], column.columnDataSource.textKeyName)">
+                                    </app-expandable-list>
+                                </span>
+                                <span class="{{column.id}}" *ngSwitchCase="columnControlTypeEnum.ReadOnlyCheck">
+                                    <mat-icon *ngIf="((editId !== '' && editId === row[keyName] && 
+                                        editRow[column.id]) || editId === '' && row[column.id])">
+                                        done
+                                    </mat-icon>
+                                </span>
+                                <span *ngSwitchCase="columnControlTypeEnum.ReadOnlyList">
+                                    <app-expandable-list 
+                                        [columnCount]="3"
+                                        [items]="(editId !== '' && editId === row[keyName]) ? 
+                                    editRow[column.id] : row[column.id]">
+                                    </app-expandable-list>
+                                </span>
+                                <span *ngSwitchCase="columnControlTypeEnum.ViewFile">
+                                    <a routerLink="{{row[keyName]}}" class="view-link" target="_blank">
+                                        <mat-icon>pageview</mat-icon>
+                                    </a>
+                                </span>
+                                <span *ngSwitchDefault> {{(editId !== '' && editId === row[keyName]) ? 
+                                    editRow[column.id] : row[column.id]}} </span>
+                            </ng-container>
+                    </span>
+
+                    <span *ngIf="column.canBeEdited && row[keyName] === editId">
+                        <ng-container [ngSwitch]="column.MuiTableControlType">
+                            <span *ngSwitchCase="columnControlTypeEnum.Slider" class="slider">
+                                <mat-slide-toggle [checked] = "editRow[column.id]"
+                                    (change)="onSliderChange($event, column, editRow)"
+                                    name="{{column.id}}">
+                                </mat-slide-toggle>
+                            </span>
+                            
+                            <span *ngSwitchCase = "columnControlTypeEnum.Text">                    
+                                <mat-form-field appearance="outline" [style.width.px] = "column.width">
+                                    <input matInput [required] = "column.isRequired" maxlength="{{column.maxLength}}"
+                                        autocomplete="off" 
+                                        placeholder="{{column.columnDisplayName}}"
+                                        maxlength="column.maxLength"
+                                        name="{{column.id}}"
+                                        [(ngModel)]="editRow[column.id]"/>
+                                </mat-form-field>
+                            </span>
+                    
+                            <span *ngSwitchCase = "columnControlTypeEnum.SingleDropdown">
+                                <mat-form-field floatLabel="always" appearance="outline" 
+                                    [style.width.px] = "column.width">                               
+                                    <mat-select [(ngModel)]="editRow[column.columnDataSource.columnId]" 
+                                        (ngModelChange)="updateDropdown($event, false,  column.columnDataSource)"
+                                        name="{{column.id}}">
+                                        <mat-option [value]="item[column.columnDataSource.idKeyName]"
+                                            *ngFor="let item of (column.columnDataSource.syncOnAction) ? 
+                                                dynamicData[column.columnDataSource.syncSourceIndex].data : 
+                                                column.columnDataSource.staticDataSource | async">
+                                            {{item[column.columnDataSource.textKeyName]}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </span>
+
+                            <span *ngSwitchCase = "columnControlTypeEnum.MultiChoiceDropdown">
+                                <mat-form-field floatLabel="always" appearance="outline" 
+                                    [style.width.px] = "column.width">
+                                    <mat-select multiple [required] = "column.isRequired"
+                                        placeholder="Please Select"
+                                        [compareWith]="compareObjects"
+                                        [(ngModel)]="editRow[column.columnDataSource.columnId]" 
+                                        id="{{column.id}}"
+                                        name="{{column.columnDataSource.columnId}}"
+                                        #multiSelect="ngModel">
+                                        <mat-select-trigger>
+                                            {{editRow[column.columnDataSource.columnId]?.length > 0
+                                                ? editRow[column.columnDataSource.columnId][0][column.columnDataSource.textKeyName] : ''}}
+                                            <span *ngIf="editRow[column.columnDataSource.columnId]?.length > 1" 
+                                                class="additional-selection">
+                                            (+{{editRow[column.columnDataSource.columnId]?.length - 1}} {{editRow[column.columnDataSource.columnId]?.length === 2 ? 
+                                                'More' : 'More'}})
+                                            </span>
+                                        </mat-select-trigger>
+                                        <mat-option value="" 
+                                            [id]="selectAllId"
+                                            (click)="toggleSelectAll(multiSelect, column.columnDataSource, false)">
+                                            Select All
+                                        </mat-option>
+                                        <mat-option value="" 
+                                            class="hide-elem"
+                                            [id]="deselectAllId"
+                                            (click)="deselectAll(multiSelect)">
+                                            Deselect All
+                                        </mat-option>
+                                        <mat-option [value]="item"
+                                            *ngFor="let item of (column.columnDataSource.syncOnAction) ? 
+                                                dynamicData[column.columnDataSource.syncSourceIndex].data : 
+                                                column.columnDataSource.staticDataSource | async"
+                                            (click)="toggleSelectAll(multiSelect, column.columnDataSource, true)">
+                                            {{item[column.columnDataSource.textKeyName]}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </span>
+                        </ng-container>
+                    </span>
+                </div>                        
+            </mat-cell>
+        </ng-container>
+       
+        <mat-header-row *cdkHeaderRowDef="displayedColumns;sticky:true;"></mat-header-row>
+        <mat-row [ngClass]="{'editMode': (editId !== '')}" 
+            *cdkRowDef="let row; columns: displayedColumns">
+        </mat-row>
+    </mat-table>
+
+    <mat-paginator [pageSizeOptions]="[5 ,10, 20, 30]" [pageSize]="20" 
+        [disabled]="editId !== ''"
+        class="pager" showFirstLastButtons></mat-paginator>    
+  </div>
+</div>

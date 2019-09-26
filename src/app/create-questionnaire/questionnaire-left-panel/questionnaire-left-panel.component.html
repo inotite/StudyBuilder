@@ -1,0 +1,16 @@
+
+<div id="left-panel">     
+   <div class="table">
+         <div [ngClass]="{overlay: disable}"></div>
+      <div class="row">
+         <div class="col-md-12">
+            <app-add-questionnaire (disable)="disablePanel($event)"></app-add-questionnaire>
+         </div>
+      </div>
+      <div class="row">
+         <div class="col-md-12">
+            <app-questionnaire-list></app-questionnaire-list>
+         </div>
+      </div>
+   </div>
+</div>

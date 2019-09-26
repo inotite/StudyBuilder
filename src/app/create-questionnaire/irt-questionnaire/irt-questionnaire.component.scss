@@ -1,0 +1,36 @@
+@import '../questionnaire-form/questionnaire-form.component.scss';
+
+.field-wrapper {
+   margin: 0 12px;
+}
+
+mat-form-field {
+   @include questionnaire-form-mat-field();
+}
+
+.rich-text-button {
+   display: block;
+}
+
+.remove-margin-padding {
+   margin: 0px;
+   padding: 0px;
+}
+
+mat-select {
+   @include questionnaire-form-font-size();
+   background: white;
+}
+
+.mat-form-field-label {
+   @include questionnaire-form-font-size();
+}
+
+label {
+   @include questionnaire-form-font-size();
+}
+
+.remove-bottom-margin-padding {
+   margin-bottom: 0px;
+   padding-bottom: 0px;
+}

@@ -1,0 +1,102 @@
+::ng-deep div.language div.addRowHeader span.displayName,
+::ng-deep div.language div.header-group-row span.displayName {
+    min-width: 255px;
+    max-width: 255px;
+}
+
+::ng-deep mat-table.inline-table.language .mat-column-countries
+{
+    min-width: 125px;
+    max-width: 125px;
+    margin-right: 24px;
+    
+    mat-expansion-panel {
+        min-width: 125px;    
+    }
+}
+
+::ng-deep mat-table.inline-table.language .mat-column-displayName
+{
+    min-width: 140px;
+    max-width: 140px;
+    
+    mat-form-field {
+        width: 140px !important;
+    }
+}
+
+::ng-deep mat-table.inline-table.language mat-header-cell
+{
+    white-space: nowrap;
+}
+
+::ng-deep mat-table.inline-table.language .mat-column-cultureName {
+    min-width: 115px;
+    max-width: 115px;
+}
+
+::ng-deep div.language div.addRowHeader span.cultureName,
+::ng-deep div.language div.header-group-row span.cultureName {
+    min-width: 100px;
+    max-width: 100px;
+}
+
+::ng-deep div.language div.header-group-row span.cultureName {
+    margin-top: 6px;
+}
+
+::ng-deep mat-table.inline-table.language .mat-column-isRightToLeft
+{
+    min-width: 118px;
+    max-width: 118px;
+    justify-content: center;
+
+    span.isRightToLeft {
+        margin-right: 24px;
+    }
+}
+
+::ng-deep mat-table.inline-table.language .mat-column-translationApproved
+{
+    min-width: 172px;
+    max-width: 172px;
+    justify-content: center;
+    .slider {
+        margin-right: 24px;
+    }
+}
+
+::ng-deep mat-table.inline-table.language .mat-column-isDefault,
+::ng-deep div.language div.addRowHeader span.isDefault,
+::ng-deep div.language div.header-group-row span.isDefault {
+    min-width: 95px;
+    max-width: 95px;
+
+    span.isDefault {
+        margin-right: 15px;
+    }
+}
+
+::ng-deep div.language div.addRowHeader span.isDefault,
+::ng-deep div.language div.header-group-row span.isDefault {
+    margin-right: -24px !important;
+}
+
+// right left spacing for header row
+::ng-deep div.language span.headerCol:first-of-type,
+::ng-deep div.language div.header-group-row span.name,
+::ng-deep div.language div.addRowHeader span.name {
+    margin-left: 220px !important;
+    min-width: 255px;
+    max-width: 255px;
+}
+
+// The mat-column override for languages
+::ng-deep mat-table.inline-table.language mat-cell:first-of-type, 
+::ng-deep mat-table.inline-table.language mat-footer-cell:first-of-type, 
+::ng-deep mat-table.inline-table.language mat-header-cell:first-of-type {
+    margin-left: 76px !important;
+    min-width: 144px;
+    max-width: 144px;
+    margin-right: 44px !important;
+}

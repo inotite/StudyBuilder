@@ -1,0 +1,11 @@
+<div class="home-icon-wrapper">
+   <a [routerLink]="[icon.url]">
+      <span class="fa-stack fa-2x">
+         <i class="{{ icon.cssIcon }} fa-stack-1x fa-lg"></i>
+         <i *ngIf="icon.isDone" class="fa fa-check fa-stack-1x fa-lg"></i>
+      </span>
+      <label class="icon-title" i18n="@@{{ icon.textKey }}">{{
+         icon.displayName
+      }}</label>
+   </a>
+</div>

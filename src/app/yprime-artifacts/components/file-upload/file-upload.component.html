@@ -1,0 +1,6 @@
+<div [ngClass]="{'file-upload-error': fileNotSelected}" class="file-upload">  
+        <label for="file-upload-input">
+            <img src="assets/file_image_upload.svg"/>
+        </label>
+        <input id="file-upload-input" type="file" name="file" (change)="onFileChange($event)" />
+</div>

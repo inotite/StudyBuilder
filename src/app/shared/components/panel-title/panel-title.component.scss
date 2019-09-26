@@ -1,0 +1,7 @@
+@import '../../../../styles/mixins.scss';
+
+#body-title {
+   text-align: left;
+   @include questionnaire-form-font-family();
+   white-space: nowrap;
+}

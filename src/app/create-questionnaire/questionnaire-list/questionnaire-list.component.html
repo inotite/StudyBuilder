@@ -1,0 +1,7 @@
+<div>
+   <ul *ngIf="showQuestionnaires">
+      <li *ngFor="let item of questionnaires">
+         <a href="{{ item.url }}">{{ item.translationKey }}</a>
+      </li>
+   </ul>
+</div>

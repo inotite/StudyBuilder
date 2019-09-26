@@ -1,0 +1,39 @@
+#homeHeaderBackground {
+  border-bottom: 3px solid #232176;
+}
+
+#homeHeaderLogoContent,
+#homeHeaderBackgroundContent {
+  height: 80px;
+}
+
+#homeHeaderLogoContent {
+  position: relative;
+}
+
+#homeHeaderLogo {
+  width: 120px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+#homeHeaderBackgroundContent {
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.header-title {
+  color: #FFF;
+}
+
+#homeTitle {
+  margin-top: 25px;
+}
+
+#homeDropdown {
+  margin-top: 21px;
+}

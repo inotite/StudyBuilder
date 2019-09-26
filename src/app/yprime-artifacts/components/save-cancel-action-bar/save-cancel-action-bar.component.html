@@ -1,0 +1,28 @@
+<div class="container-fluid">
+    <div class="row">
+       <div class="col-sm-12 text-to-right">
+          <input
+             type="image"
+             src="../../../assets/images/CANCEL_BUTTON.svg"
+             class="btTxt"
+             id="cancel"
+             (click)="cancelAction.emit(true)"/>
+          <input
+             type="image"
+             src="../../../assets/images/PURPLE_SAVE_CHANGES_button.svg"
+             class="btTxt submit"
+             (click)="saveAction.emit(true)"
+             id="save"/>
+       </div>
+    </div>
+    <div
+       class="row"
+       [ngStyle]="{
+          visibility: displayValidationError ? 'hidden' : 'visible'
+       }">
+       <div class="col-sm-12 text-to-right">
+          <label i18n class="showErrorMessage"
+             ><span><B>Alert: Please address all higlighted fields</B></span></label>
+       </div>
+    </div>
+ </div>

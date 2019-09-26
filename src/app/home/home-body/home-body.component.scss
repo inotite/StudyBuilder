@@ -1,0 +1,15 @@
+@import "../home.component.scss";
+@import './../../../styles/mixins.scss';
+
+#workflowWrapper{
+  border-radius: .4em;
+  border: $home-border;
+  border-bottom: 0;
+  margin-top: 2em;
+  margin-bottom: $footer-height;
+}
+
+.right {
+  border-bottom: $home-border;
+  text-align: center;
+}

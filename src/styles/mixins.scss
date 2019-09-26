@@ -1,0 +1,110 @@
+@import './variables.scss';
+
+@mixin questionnaire-form-font-family {
+   font-family: 'Lato', sans-serif;
+};
+
+@mixin questionnaire-form-container {
+   width: 100%;
+   display: block;
+   margin: 0;
+   padding: 0;
+   background: white;
+}
+
+@mixin questionnaire-form-font-size {
+   @media only screen and (min-width: 1600px) {
+      font-size: 16px;
+   }
+   @media only screen and (max-width: 1600px) {
+      font-size: 14px;
+   }
+}
+
+@mixin questionnaire-form-mat-field {
+   @include questionnaire-form-font-family();
+   @include questionnaire-form-font-size();
+   width: 100%;
+   padding: 0px;
+};
+
+@mixin questionnaire-form-mat-divider {
+   margin-top: 40px;
+   margin-bottom: 40px;
+   width: 100%;
+};
+
+@mixin questionnaire-form-label {
+   @include questionnaire-form-font-size();
+   background: transparent;
+}
+
+@mixin mat-radio-button {
+   @include questionnaire-form-font-family();
+   @include questionnaire-form-font-size();
+   padding-right: 21px;
+   background: transparent;
+}
+
+@mixin paneled-body {
+   // margin: $body-margin-size $body-margin-size 40px $body-margin-size;
+   margin: 0 0 15px 0;
+};
+
+@mixin wrapper-settings {
+   height: 8em;
+   text-align: center;
+   margin: 0.6em 0;
+   float: left;
+   padding-top: 0.3em;
+};
+
+@mixin header-cell {
+   color: $yPrime-light-blue;
+   font-weight: $home-label-weight;
+};
+
+
+@mixin questionnaire-panels {
+   display: inline-flex;
+   min-height: 800px;
+   height: 100%;
+   vertical-align: top;
+   border: 1px solid $yPrime-gray-border;
+};
+
+@mixin questionnaire-form-container {
+   width: 100%;
+   display: block;
+   margin: 0;
+   padding: 0;
+   background: white;
+}
+
+@mixin questionnaire-form-font-size {
+   font-size: 12px;
+}
+
+@mixin questionnaire-form-mat-field {
+   @include questionnaire-form-font-family();
+   @include questionnaire-form-font-size();
+   width: 100%;
+   background: white;
+};
+
+@mixin questionnaire-form-mat-divider {
+   margin-top: 40px;
+   margin-bottom: 40px;
+};
+
+@mixin questionnaire-form-label {
+   @include questionnaire-form-font-size();
+   background: white;
+}
+
+@mixin mat-radio-button {
+   @include questionnaire-form-font-family();
+   @include questionnaire-form-font-size();
+   padding-right: 21px;
+   background: white;
+}

@@ -1,0 +1,7 @@
+{
+   "name": "UAT",
+   "production": true,
+   "settings": {
+      "apiRoot": "https://uat-studybuilderservices.eclinicalcloud.net/v1/"
+   }
+}

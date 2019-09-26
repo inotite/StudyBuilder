@@ -1,0 +1,24 @@
+@import './../../styles/variables.scss';
+
+footer {
+    height: $footer-height;
+
+    background: rgb(231, 231, 231);
+    border-top: 2px ridge rgb(212, 212, 212);
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 30px;
+
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+
+    box-sizing: border-box;
+}
+footer span {
+    font-size: 10px;
+    color: #232176;
+    padding-right: 10px;
+}

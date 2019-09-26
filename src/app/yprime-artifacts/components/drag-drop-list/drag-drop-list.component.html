@@ -1,0 +1,56 @@
+<div class="row" cdkDropListGroup>
+  <span class="submit-action-note" i18n>
+      Select actions to execute when questionnaire is saved by dragging from left to right.<br />
+     <b>Order can be adjusted at any time by dragging and dropping.</b>
+  </span>
+</div>
+
+<div class="row" cdkDropListGroup>
+     <div class="col-5">
+        <div class="align-self-start submit-action-container">
+           <div class="submit-action-header-text">AVAILABLE ACTIONS</div>
+              <div
+                 cdkDropList
+                 #availableItemsList = "cdkDropList"
+                 [cdkDropListData]="availableItems"
+                 [cdkDropListConnectedTo] = "selectedItemsList"
+                 class="submit-action-list"
+                 (cdkDropListDropped)="drop($event)">
+                 <div
+                    class="submit-action-item-box"
+                    *ngFor="let item of availableItems"
+                    cdkDrag>
+                    {{ item.displayName }}
+                 </div>
+              </div>
+        </div>
+     </div>
+     
+     <div class="col-2 drag-drop-arrow-container">
+          <div class="drag-drop-arrow align-self-center"
+            [ngStyle]= "{'background-image':'url'+ 'assets/images/IRT-dragDropArrow.svg' +')'}">
+          </div>
+        
+          <div class="drag-drop-arrow align-self-center"
+            [ngStyle]= "{'background-image':'url'+ 'assets/images/drag-drop-arrow-left.svg' +')'}">
+          </div>
+     </div>
+
+     <div class="col-5">
+        <div class="align-self-end selected-container">
+            <div class="submit-action-header-text">EXECUTABLE ACTIONS</div>
+            <div
+              data-text="Drag actions here"
+              cdkDropList #selectedItemsList = "cdkDropList"
+              [cdkDropListData]="selectedItems"
+              class="selected-action-text submit-action-list-selected"
+              (cdkDropListDropped)="drop($event)">
+              <div class="submit-action-item-box"
+                 *ngFor="let item of selectedItems"
+                 cdkDrag>
+                 {{ item.displayName }}
+              </div>
+           </div>
+        </div>
+     </div>
+</div>

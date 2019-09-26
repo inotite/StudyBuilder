@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="31px" height="30px" viewBox="0 0 31 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>Path</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="22.7637278%" y1="66.1908064%" x2="77.2362722%" y2="66.1908064%" id="linearGradient-1">
+            <stop stop-color="#188AFF" offset="0%"></stop>
+            <stop stop-color="#00ADEE" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="working-layouts" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="page-2-IRT" transform="translate(-676.000000, -965.000000)" fill="url(#linearGradient-1)" fill-rule="nonzero">
+            <path d="M705.010589,978.032949 L682.788866,978.032949 L692.497192,968.385502 C693.273063,967.614498 693.273063,966.349259 692.497192,965.578254 C691.721322,964.807249 690.467993,964.807249 689.692123,965.578254 L676.581903,978.60626 C675.806032,979.377265 675.806032,980.622735 676.581903,981.39374 L689.692123,994.421746 C690.467993,995.192751 691.721322,995.192751 692.497192,994.421746 C693.273063,993.650741 693.273063,992.405272 692.497192,991.634267 L682.788866,981.98682 L705.010589,981.98682 C706.104765,981.98682 707,981.097199 707,980.009885 C707,978.92257 706.104765,978.032949 705.010589,978.032949 Z" id="Path" transform="translate(691.500000, 980.000000) scale(-1, 1) translate(-691.500000, -980.000000) "></path>
+        </g>
+    </g>
+</svg>

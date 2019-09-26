@@ -1,0 +1,16 @@
+.ok-button {
+    margin-left: 2rem;
+}
+
+.mat-dialog-title {
+    margin: unset !important;
+    text-align: center;
+}
+
+.confirmation-actions {
+    justify-content: flex-end;
+}
+
+:host /deep/ .message {
+    margin-top: 200px;
+ }

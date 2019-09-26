@@ -1,0 +1,23 @@
+<div class="dropdown-select-field" [id]="key">
+  <div class="field-label">
+    <span *ngIf="isRequired" class="asterik s18"></span><label i18n [for]="key">{{label}}</label>
+  </div>
+  <div class="field-input">    
+    <mat-select [formControl]="formControl" class="form-control" [attr.default-value]="defaultValue">
+      <mat-option *ngIf="placeholder" value="" disabled i18n>{{placeholder}}</mat-option>
+      <mat-option *ngFor="let selectOption of selectOptions" [value]="selectOption.value" i18n>{{selectOption.label ? selectOption.label : selectOption.value}}</mat-option>
+    </mat-select>
+
+    <div *ngIf="formControl.invalid && (formControl.dirty || formControl.touched)" class="alert alert-invalid">
+      <div i18n>
+        {{ getErrorMessage() }}
+      </div>
+    </div>
+  </div>
+  <div class="field-info" *ngIf="infoText">
+    <label i18n>{{infoText}}</label>
+  </div>
+  <div class="help-icon" (click)="onClickHelperText()">
+    <mat-icon i18n aria-label="Help Icon">help</mat-icon>
+  </div>
+</div>

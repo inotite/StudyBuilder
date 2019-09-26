@@ -1,0 +1,51 @@
+@import '../../../styles/mixins.scss';
+
+.field-wrapper {
+   margin: 0 24px;
+}
+
+mat-form-field {
+   @include questionnaire-form-mat-field();
+}
+
+.rich-text-button {
+   display: block;
+}
+
+.remove-margin-padding {
+   margin: 0px;
+   padding: 0px;
+}
+
+mat-select,
+.mat-form-field-label {
+   @include questionnaire-form-font-size();
+}
+
+label {
+   @include questionnaire-form-label();
+   @include questionnaire-form-font-size();
+}
+
+mat-slide-toggle {
+   @include questionnaire-form-font-size();
+}
+
+.mat-slide-toggle-label {
+   background: transparent;
+}
+
+#richTextEditorIcon {
+   padding-top: 60px;
+   margin-left: 10px;
+}
+
+.remove-right-margin-padding {
+   margin-right: 0px;
+   padding-right: 0px;
+}
+
+.remove-left-margin-padding {
+   margin-left: 0px;
+   padding-left: 0px;
+}

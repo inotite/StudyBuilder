@@ -1,0 +1,46 @@
+<div *ngIf="shouldDisplayCategory('StudyWide')"
+     class="list-group-flush border-0 study-wide">
+    <div i18n class="list-group-item pl-3 border-0">Study Wide</div>
+    <div class="list-group-flush ml-3 border-0">
+        <button i18n
+                (click)="selectCategoryLink('StudyWideGeneral')"
+                type="button"
+                class="list-group-item list-group-item-action border-0 general">General</button>
+        <button i18n
+                (click)="selectCategoryLink('StudyWideSubjectID')"
+                type="button"
+                class="list-group-item list-group-item-action border-0 subject-id">Subject ID</button>
+    </div>
+</div>
+<div *ngIf="shouldDisplayCategory('eCOA')"
+     class="list-group-flush border-0 ecoa">
+    <div i18n class="list-group-item pl-3 border-0">eCOA</div>
+    <div class="list-group-flush ml-3 border-0">
+            <button i18n
+                    (click)="selectCategoryLink('EcoaGeneral')"
+                    type="button"
+                    class="list-group-item list-group-item-action border-0 general">General</button>
+            <button i18n
+                    (click)="selectCategoryLink('EcoaHandheld')"
+                    type="button"
+                    class="list-group-item list-group-item-action border-0 handheld">Handheld</button>
+            <button i18n
+                    (click)="selectCategoryLink('EcoaTablet')"
+                    type="button"
+                    class="list-group-item list-group-item-action border-0 tablet">Tablet</button>
+    </div>
+</div>
+<div *ngIf="shouldDisplayCategory('IRT')"
+     class="list-group-flush border-0 irt">
+    <div i18n class="list-group-item pl-3 border-0">IRT</div>
+    <div class="list-group-flush ml-3 border-0">
+            <button i18n
+                    (click)="selectCategoryLink('IrtGeneral')"
+                    type="button"
+                    class="list-group-item list-group-item-action border-0 general">General</button>
+            <button i18n
+                    (click)="selectCategoryLink('IrtAlerts')"
+                    type="button"
+                    class="list-group-item list-group-item-action border-0 alerts">Alerts</button>
+    </div>
+</div>

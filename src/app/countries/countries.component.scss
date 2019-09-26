@@ -1,0 +1,95 @@
+::ng-deep div.countries div.header-group-row span.shortName {
+    margin-top: 6px;
+}
+
+::ng-deep mat-table.inline-table.countries mat-header-cell
+{
+    white-space: nowrap;
+}
+
+::ng-deep div.countries div.addRowHeader span.languages,
+::ng-deep div.countries div.header-group-row span.languages {
+    min-width: 255px;
+    max-width: 255px;
+}
+
+::ng-deep mat-table.inline-table.countries .mat-column-languages {
+    min-width: 269px;
+    margin-right: 102px !important;
+    mat-expansion-panel {
+        min-width: 260px;    
+    }
+}
+
+::ng-deep div.countries .mat-column-shortName, 
+::ng-deep div.countries span.headerCol.shortName {
+    min-width: 100px;
+    max-width: 100px;
+}
+
+::ng-deep mat-table.inline-table.countries .mat-column-shortName {
+    min-width: 118px;
+    margin-right: 44px !important;
+}
+
+::ng-deep mat-table.inline-table.countries .mat-column-use24HourTime {
+    min-width: 110px;
+    max-width: 110px;
+    justify-content: center;
+
+    .slider {
+        margin-right: 32px;
+    }
+}
+
+::ng-deep div.countries .mat-column-use24HourTime, 
+::ng-deep div.countries span.headerCol.use24HourTime {
+    min-width: 95px;
+    max-width: 95px;
+    justify-content: center;
+
+    .slider {
+        margin-right: 18px;
+    }
+}
+
+::ng-deep mat-table.inline-table.countries .mat-column-useMetric
+{
+    min-width: 108px;
+    max-width: 108px;
+    justify-content: center;
+
+    .slider {
+        margin-right: 32px;
+    }
+}
+
+::ng-deep div.countries .mat-column-useMetric, 
+::ng-deep div.countries span.headerCol.useMetric {
+    min-width: 90px;
+    max-width: 90px;
+    justify-content: center;
+    
+    .slider {
+        margin-right: 18px;
+    }
+}
+
+
+// right left spacing for header row
+::ng-deep mat-table.inline-table.countries mat-cell:first-of-type, 
+::ng-deep mat-table.inline-table.countries mat-footer-cell:first-of-type, 
+::ng-deep mat-table.inline-table.countries mat-header-cell:first-of-type {
+    margin-left: 88px !important;
+    min-width: 208px;
+    max-width: 208px;
+    margin-right: 44px !important;
+}
+
+::ng-deep div.countries span.headerCol:first-of-type,
+::ng-deep div.countries div.header-group-row span.name,
+::ng-deep div.countries div.addRowHeader span.name {
+    margin-left: 179px !important;
+    min-width: 255px;
+    max-width: 255px;
+}

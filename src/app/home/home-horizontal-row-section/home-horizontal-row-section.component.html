@@ -1,0 +1,8 @@
+<div [ngClass]="isAboveBar ? '' : 'second-row'" class="row">
+  <div class="col-md-12">
+    <ng-template ngFor let-item [ngForOf]="items" let-i="index">
+      <app-home-arrow-wrapper *ngIf="i !== 0"></app-home-arrow-wrapper>
+      <app-home-icon [icon]="item"></app-home-icon>
+    </ng-template>
+  </div>
+</div>

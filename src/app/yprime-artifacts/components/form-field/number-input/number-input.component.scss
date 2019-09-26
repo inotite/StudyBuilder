@@ -1,0 +1,91 @@
+.number-input-field {
+    height: 32px;
+    width: 100%;
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.number-input-field div {
+    float: left;
+}
+
+.number-input-field .field-label {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.number-input-field .field-label .asterik {
+    display: flex;
+}
+
+.number-input-field .field-label .asterik::before {
+    margin-top: -5px;
+}
+
+.number-input-field .field-label label {
+    font-weight: bold;
+    font-size: 18px;
+    margin: 0;
+    line-height: 16px;
+    max-width: 250px;
+    text-align: right;
+}
+
+.number-input-field .field-input {
+    margin-left: 24px;
+    max-width: 50px;
+}
+
+.number-input-field .field-input .form-control {
+    height: 100%;
+}
+
+.number-input-field .field-input input[type=number]::-webkit-inner-spin-button, 
+.number-input-field .field-input input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+.number-input-field .field-input .form-control.ng-invalid.ng-touched,
+.number-input-field .field-input .form-control.ng-invalid.ng-dirty {
+    border: 1px solid #EC008C;
+    box-shadow: 0 0 3px #EC008C;
+}
+
+.number-input-field .field-input .alert {
+    padding: 3px 0 0;
+    margin: 0;
+    font-size: 11px;
+    color: #EC008C;
+    font-weight: bold;
+}
+
+.number-input-field .field-info {
+    margin-left: 12px;
+}
+
+.number-input-field .field-info label {
+    font-size: 16px;
+    line-height: 32px;
+}
+
+.number-input-field .help-icon {
+    margin-left: 12px;
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.number-input-field .help-icon:hover {
+    cursor: pointer;
+}
+
+.number-input-field .help-icon .mat-icon {
+    text-align: center;
+    font-size: 20px;
+    line-height: 24px;
+    color: #61d3fc;
+}

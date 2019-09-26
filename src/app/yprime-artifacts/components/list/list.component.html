@@ -1,0 +1,7 @@
+<div *ngIf="items">
+  <ul>
+      <li *ngFor="let item of items">
+        <a [routerLink] ="item.url">{{ item.displayName }}</a>
+      </li>
+  </ul>
+</div>

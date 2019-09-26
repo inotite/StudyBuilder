@@ -1,0 +1,14 @@
+<mat-dialog-content>
+  <app-mui-inline-table 
+    [data]="data" 
+    (actionClicked)="onActionClicked($event)" 
+    [processingStatus]="processingStatus"
+    [columnNames]="columnNames">
+</app-mui-inline-table> 
+</mat-dialog-content>
+<mat-dialog-actions class="confirmation-actions">
+  <span class="ok-button"> 
+    <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
+    <button mat-flat-button color="primary" (click)="updateChoices()" [mat-dialog-close]="true">Ok</button>  
+  </span>
+</mat-dialog-actions>

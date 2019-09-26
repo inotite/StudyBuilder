@@ -1,0 +1,26 @@
+<mat-expansion-panel *ngIf="items && items.length > columnCount" 
+  (opened)="panelOpenState = true"
+  (closed)="panelOpenState = false">
+  <mat-expansion-panel-header>
+    <mat-panel-description>
+      <span class="expandedMessage">
+          <ng-container *ngFor="let item of items; let i = index">
+              <span *ngIf="(i <= columnCount - 1)">
+                  <span class="list-header" *ngIf="i > 0"> , </span> {{items[i]}}
+              </span>
+          </ng-container>
+      </span>
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+    <span *ngFor="let item of items; let i = index">
+        <span *ngIf="items && i > columnCount - 1">
+            {{items[i]}}<span *ngIf="i < items.length - 1"> , </span>
+        </span>
+    </span>
+</mat-expansion-panel>
+
+<div class="expandedMessage" *ngIf="items && items.length <= columnCount">
+    <span *ngFor="let item of items; let i = index">
+        <span *ngIf="i > 0"> , </span> {{items[i]}}
+    </span>
+</div>

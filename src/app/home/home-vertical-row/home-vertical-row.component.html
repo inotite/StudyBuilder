@@ -1,0 +1,10 @@
+<div class="row header-title">
+  <div class="col-md-12">
+    <label>{{title | uppercase}}</label>
+  </div>
+</div>
+<div class="row" *ngFor="let item of items">
+  <div class="col-md-12">
+    <a href="{{item.url}}" i18n="@@{{item.textKey}}">{{item.displayName | uppercase}}</a>
+  </div>
+</div>

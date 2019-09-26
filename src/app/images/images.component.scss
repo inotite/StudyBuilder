@@ -1,0 +1,58 @@
+::ng-deep div.images div.header-group-row span.fileSize {
+    margin-top: 6px;
+}
+
+::ng-deep mat-table.inline-table.images mat-header-cell
+{
+    white-space: nowrap;
+}
+
+::ng-deep div.images div.addRowHeader span.displayName,
+::ng-deep div.images div.header-group-row span.displayName {
+    min-width: 255px;
+    max-width: 255px;
+}
+
+::ng-deep div.images div.addRowHeader span.language,
+::ng-deep div.images div.header-group-row span.language {
+    min-width: 255px;
+    max-width: 255px;
+}
+
+::ng-deep mat-table.inline-table.images .mat-column-language {
+    min-width: 269px;
+    margin-right: 102px !important;
+    mat-expansion-panel {
+        min-width: 260px;    
+    }
+}
+
+::ng-deep div.images .mat-column-fileSize, 
+::ng-deep div.images span.headerCol.fileSize {
+    min-width: 100px;
+    max-width: 100px;
+}
+
+::ng-deep mat-table.inline-table.images .mat-column-fileSize {
+    min-width: 118px;
+    margin-right: 44px !important;
+}
+
+
+// right left spacing for header row
+::ng-deep mat-table.inline-table.images mat-cell:first-of-type, 
+::ng-deep mat-table.inline-table.images mat-footer-cell:first-of-type, 
+::ng-deep mat-table.inline-table.images mat-header-cell:first-of-type {
+    margin-left: 118px !important;
+    min-width: 208px;
+    max-width: 208px;
+    margin-right: 44px !important;
+}
+
+::ng-deep div.images span.headerCol:first-of-type,
+::ng-deep div.images div.header-group-row span.fileUpload,
+::ng-deep div.images div.addRowHeader span.fileUpload {
+    margin-left: 179px !important;
+    min-width: 255px;
+    max-width: 255px;
+}

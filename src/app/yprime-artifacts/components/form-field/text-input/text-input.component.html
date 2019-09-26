@@ -1,0 +1,25 @@
+<div class="text-input-field" [id]="key">
+  <div class="field-label">
+    <span *ngIf="isRequired" class="asterik s18"></span><label i18n [for]="key">{{label}}</label>
+  </div>
+  <div class="field-input">
+    <input type="text" i18n
+          [formControl]="formControl"
+          class="form-control"
+          [placeholder]="placeholder"
+          [attr.default-value]="defaultValue"
+          [attr.minlength]="minLength == -1 ? null : minLength"
+          [attr.maxlength]="maxLength == -1 ? null : maxLength">
+    <div *ngIf="formControl.invalid && (formControl.dirty || formControl.touched)" class="alert alert-invalid">
+      <div i18n>
+        {{ getErrorMessage() }}
+      </div>
+    </div>
+  </div>
+  <div class="field-info" *ngIf="infoText">
+    <label i18n>{{infoText}}</label>
+  </div>
+  <div class="help-icon" (click)="onClickHelperText()">
+    <mat-icon i18n aria-label="Help Icon">help</mat-icon>
+  </div>
+</div>

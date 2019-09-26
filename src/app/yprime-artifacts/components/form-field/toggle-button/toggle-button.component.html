@@ -1,0 +1,14 @@
+<div class="toggle-button-field" [id]="key">
+  <div class="field-label">
+    <label i18n [for]="key">{{label}}</label>
+  </div>
+  <div class="field-input">
+    <mat-slide-toggle class="example-margin" [formControl]="formControl" [attr.default-value]="defaultValue"> {{formControl.value ? valueText[0] : valueText[1]}} </mat-slide-toggle>
+  </div>
+  <div class="field-info" *ngIf="infoText">
+    <label i18n>{{infoText}}</label>
+  </div>
+  <div class="help-icon" (click)="onClickHelperText()">
+    <mat-icon i18n aria-label="Help Icon">help</mat-icon>
+  </div>
+</div>

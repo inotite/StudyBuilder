@@ -1,0 +1,40 @@
+<ng-container [formGroup]="questionnaireButtonsForm">
+   <div class="container-fluid">
+      <div class="row">
+         <div class="col-sm-12 text-to-right">
+            <button
+               mat-flat-button
+               color="primary"
+               id="cancelQuestionnaire"
+               i18n
+               (click)="onCancel()"
+            >
+               CANCEL
+            </button>
+            <button
+               type="submit"
+               mat-flat-button
+               color="accent"
+               id="saveQuestionnaire"
+               i18n
+            >
+               SAVE CHANGES
+            </button>
+         </div>
+      </div>
+      <div
+         class="row save-cancel-buttons"
+         [ngStyle]="{
+            visibility: hideInvalidFormError ? 'hidden' : 'visible'
+         }"
+      >
+         <div class="col-sm-12 text-to-right">
+            <label i18n class="showErrorMessage"
+               ><span
+                  ><B>Alert: Please address all highlighted fields</B></span
+               ></label
+            >
+         </div>
+      </div>
+   </div>
+</ng-container>

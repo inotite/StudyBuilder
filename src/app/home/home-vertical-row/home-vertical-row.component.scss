@@ -1,0 +1,24 @@
+@import "../home.component.scss";
+
+label {
+  @include header-cell();
+  margin-top: .4em;
+}
+
+a {
+  color: $home-link-color;
+}
+
+.row {
+  margin-top: 1em;
+}
+
+.row:first-of-type {
+  margin-top: 0;
+}
+
+@media(min-width: 768px) {
+  label {
+    font-size: 1.2em;
+  }
+}

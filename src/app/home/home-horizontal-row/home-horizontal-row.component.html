@@ -1,0 +1,14 @@
+<div class="row" [ngClass]="isLast ? 'last-row' : ''">
+  <div class="header-cell col-md-1 col-sm-2 col-xs-12">
+    <label>{{title | uppercase}}</label>
+  </div>
+  <div class="bucket col-md-11 col-sm-10 col-xs-12">
+    <app-home-horizontal-row-section
+      [items]="getItems(false)"
+      [isAboveBar]="true"></app-home-horizontal-row-section>
+    <app-home-horizontal-row-section
+      *ngIf="getItems(true).length > 0"
+      [items]="getItems(true)"
+      [isAboveBar]="false"></app-home-horizontal-row-section>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<div class="number-input-field" [id]="key">
+  <div class="field-label">
+    <span *ngIf="isRequired" class="asterik s18"></span><label i18n [for]="key">{{label}}</label>
+  </div>
+  <div class="field-input">
+    <input type="number" i18n [formControl]="formControl" class="form-control" [placeholder]="placeholder" [attr.default-value]="defaultValue">
+    <div *ngIf="formControl.invalid && (formControl.dirty || formControl.touched)" class="alert alert-invalid">
+      <div i18n>
+        {{ getErrorMessage() }}
+      </div>
+    </div>
+  </div>
+  <div class="field-info" *ngIf="infoText">
+    <label i18n>{{infoText}}</label>
+  </div>
+  <div class="help-icon" (click)="onClickHelperText()">
+    <mat-icon i18n aria-label="Help Icon">help</mat-icon>
+  </div>
+</div>

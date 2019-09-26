@@ -1,0 +1,9 @@
+::ng-deep mat-expansion-panel {
+    background: unset !important;
+    box-shadow: unset !important;
+    margin-right: 5px;
+}
+
+.list-header, .mat-expansion-panel-header-description, .mat-expansion-indicator::after  {
+   color: rgba(0, 0, 0, 0.87);
+}

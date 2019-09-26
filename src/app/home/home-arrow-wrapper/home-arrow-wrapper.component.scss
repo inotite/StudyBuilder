@@ -1,0 +1,7 @@
+@import './../../../styles/mixins.scss';
+
+.arrow-wrapper {
+  width: 3em;
+  vertical-align: middle;
+  @include wrapper-settings();
+}

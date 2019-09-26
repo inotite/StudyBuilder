@@ -1,0 +1,5 @@
+export enum QuestionnaireDeviceTypes {
+   Handheld = '1114B71E-F44F-43BA-B966-44BF3CF9D253',
+   Tablet = 'AC2D9044-01C5-45F1-B439-A65AA92FD435',
+   Irt = '3BBABEB9-A34C-438C-8B1F-811BA6283549'
+}

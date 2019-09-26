@@ -1,0 +1,84 @@
+@import '../../../styles/variables.scss';
+@import '../questionnaire-form/questionnaire-form.component.scss';
+
+#eCOAFields {
+   margin: 0;
+}
+
+.container,
+.row {
+   margin: 0;
+   padding: 0;
+}
+
+.large-row-top-margin {
+   margin-top: 0px;
+}
+
+.small-row-top-margin {
+   margin-top: 24px;
+}
+
+.extra-small-row-top-margin {
+   margin-top: 0;
+}
+
+.mat-radio-label-content {
+   @include questionnaire-form-font-family();
+   @include questionnaire-form-font-size();
+}
+
+.mat-radio-label-content-error {
+   @include questionnaire-form-font-family();
+   @include questionnaire-form-font-size();
+   color:$errorColor;
+}
+
+label {
+   @include questionnaire-form-font-size();
+   background: transparent;
+}
+
+mat-form-field {
+   @include questionnaire-form-mat-field();
+   margin-bottom: 0px;
+   padding: 0px;
+}
+
+.mat-form-field mat-slide-toggle {
+   @include questionnaire-form-font-family();
+   @include questionnaire-form-font-size();
+   padding-top: 17px;
+}
+
+mat-divider {
+   @include questionnaire-form-mat-divider();
+   width: 100%;
+}
+
+.has-error {
+   border: 2px solid $errorColor;
+}
+
+.form-control-radio-button {
+   padding: 4px 0px 2px 2px;
+   width: 205px;
+   height: 31px;
+}
+
+mat-radio-button {
+   padding-right: 20px;
+}
+
+#forceMissedEntriesLabel {
+   padding-left: 21px;
+}
+
+.days-label {
+   padding-left: 12px;
+}
+
+.ecoa-only-input {
+   width: 75px;
+   padding-left: 15px;
+}

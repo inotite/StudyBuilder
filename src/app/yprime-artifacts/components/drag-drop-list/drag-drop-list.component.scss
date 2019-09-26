@@ -1,0 +1,104 @@
+$drag-drop-font-family-font-family: 'Lato', sans-serif;
+ 
+.submit-action-container {
+   float: right;
+   vertical-align: top;
+   margin-top: 14px;
+   margin-bottom: 36px;
+}
+.selected-container {
+   display: inline-block;
+   vertical-align: top;
+   margin-top: 28px;
+   margin-bottom: 36px;
+}
+
+.submit-action-list {
+   border: solid 1px #ccc;
+   min-height: 30px;
+   background: white;
+   overflow: hidden;
+   display: block;
+}
+
+.submit-action-header-text {
+   font-family: $drag-drop-font-family-font-family;
+   font-size: 16px;
+   font-family: 'ProximaNova-Regular';
+   color: #00adee;
+   text-align: center;
+   min-height: 30px;
+   background: white;
+   overflow: hidden;
+   display: block;
+}
+
+.submit-action-list-selected {
+   border: solid 1px #ccc;
+   background: white;
+   overflow: hidden;
+   display: block;
+}
+
+.drag-drop-arrow-container {
+   padding-top: 10%;
+}
+
+.drag-drop-arrow {
+   padding-top: 10px;
+   padding-bottom: 10px;
+   text-align: center;
+}
+
+[contentEditable='true']:empty:not(:focus):after {
+   content: attr(data-text);
+   font-size: 20px;
+   font-weight: bold;
+   color: gray;
+   display: block;
+   text-align: center;
+   margin-top: 50%;
+}
+
+.submit-action-item-box {
+   padding: 5px 5px;
+   border-bottom: solid 1px #ccc;
+   color: rgba(0, 0, 0, 0.87);
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   justify-content: space-between;
+   box-sizing: border-box;
+   cursor: move;
+   background: #bff8ff;
+   font-size: 12px;
+}
+
+.cdk-drag-preview {
+   box-sizing: border-box;
+   box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+      0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+.cdk-drag-placeholder {
+   opacity: 0;
+}
+
+.cdk-drag-animating {
+   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.submit-action-item-box:last-child {
+   border: none;
+}
+
+.submit-action-list.cdk-drop-list-dragging
+   .example-box:not(.cdk-drag-placeholder) {
+   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.submit-action-note {
+   font-family: $drag-drop-font-family-font-family;
+   font-size: 12px;
+   background: white;
+}

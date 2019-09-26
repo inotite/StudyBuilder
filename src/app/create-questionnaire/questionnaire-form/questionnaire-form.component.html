@@ -1,0 +1,44 @@
+<div class="container scrollable hide-inner-border">
+   <div class="row">
+      <div class="col-sm-8">
+
+         <h1 i18n>
+            QUESTIONNAIRE INFORMATION
+         </h1>
+      </div>
+   <div class='col-sm-4' id="mandatoryFieldKey" i18n
+         ><span id="asteriskKey" class="asterik"></span><span>= MANDATORY</span></div>
+   </div>
+   <form [formGroup]="questionnaireForm" (ngSubmit)="onSubmit()">
+      <app-questionnaire-type
+         (deviceType)="onDeviceTypeChange($event)"
+         [questionnaire]="questionnaire"
+         formControlName="questionnaireType"
+         #questionnaireType
+      ></app-questionnaire-type>
+      <app-unified-questionnaire
+         *ngIf="showUnified"
+         [questionnaire]="questionnaire"
+         formControlName="unifiedQuestionnaire"
+         #unifiedQuestionnaire
+      ></app-unified-questionnaire>
+      <app-ecoa-questionnaire
+         *ngIf="showECOA"
+         [questionnaire]="questionnaire"
+         [deviceType]="questionnaireDeviceType"
+         formControlName="ecoaQuestionnaire"
+         #eCOA
+      ></app-ecoa-questionnaire>
+      <app-irt-questionnaire
+         *ngIf="showIrt"
+         [questionnaire]="questionnaire"
+         formControlName="irtQuestionnaire"
+         #irtQuestionnaire
+      ></app-irt-questionnaire>
+
+      <app-questionnaire-buttons
+         formControlName="questionnaireButtons"
+         #questionnaireButtons
+      ></app-questionnaire-buttons>
+   </form>
+</div>

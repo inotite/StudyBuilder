@@ -1,0 +1,22 @@
+<div class="req-message"><span class="asterik" i18n></span><span>= MANDATORY</span></div>
+<div class="study-settings-form">
+    <form [formGroup]="settingsForm" (ngSubmit)="onSubmit()">
+        <div class="row"
+             *ngFor="let studySetting of studySettings">
+            <app-form-field class="w-100"
+                                      [formField]="studySetting"
+                                      [formGroup]="settingsForm"
+                                      (showHelperText)="onShowHelperText($event)"></app-form-field>
+        </div>
+        <div class="row align-items-center">
+            <div class="col text-right mt-2">
+                <button i18n
+                        type="button"
+                        class="btn btn-primary btn-cancel">Cancel</button>
+                <button i18n
+                        type="submit"
+                        class="btn btn-primary">Save Changes</button>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,48 @@
+<ng-container [formGroup]="irtQuestionnaireForm">
+   <div class="field-wrapper">
+      <div class="row remove-bottom-margin-padding">
+         <div class="col-sm-6 remove-bottom-margin-padding">
+            <label i18n for="emailContentList"
+               >Select emails to be sent when questionnaire is saved</label
+            >
+            <mat-form-field floatLabel="always" appearance="outline">
+               <mat-select
+                  multiple
+                  id="emailContentList"
+                  name="emailContentList"
+                  placeholder="Please select"
+                  i18n
+                  formControlName="emailContentList"
+               >
+                  <mat-option
+                     *ngFor="let emailContent of emailContentList"
+                     [value]="emailContent"
+                  >
+                     {{ emailContent.name }}
+                  </mat-option>
+               </mat-select>
+            </mat-form-field>
+         </div>
+         <div class="col-sm-6 remove-bottom-margin-padding">
+            &nbsp;
+         </div>
+         <div class="col-sm-12 remove-margin-padding">
+            <mat-divider></mat-divider>
+         </div>
+      </div>
+
+      <div class="row">
+         <div class="col-sm-12">
+            <app-submit-action
+               formControlName="submitAction"
+               #submitAction
+            ></app-submit-action>
+         </div>
+      </div>
+      <div class="row">
+         <div class="col-sm-12 remove-margin-padding">
+            <mat-divider></mat-divider>
+         </div>
+      </div>
+   </div>
+</ng-container>

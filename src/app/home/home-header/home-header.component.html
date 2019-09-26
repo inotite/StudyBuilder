@@ -1,0 +1,30 @@
+<div id="homeHeaderBackground" class="col-md-12">
+  <div class="row">
+    <div id="homeHeaderLogoContent" class="col-md-2">
+      <img 
+        id="homeHeaderLogo"
+        src="{{yPrimeLogoUrl}}"
+        alt="YPrime Study Builder"/>
+    </div>
+
+    <div id="homeHeaderBackgroundContent"
+         class="col-md-10"
+         [appBackgroundImage]="backgroundObservable">
+      <div class="row ">
+        <div id="homeHeaderBackgroundInnerContent" class="col-md-6 offset-md-2">
+          <div class="row middle">
+            <div class="col-md-6 text-right">
+              <h4 id="homeTitle" class="header-title" i18n>Create Your Study</h4>
+            </div>
+            <div id="homeDropdown" class="col-md-6">
+              <app-dropdown
+                [content]="studyTypeOptions"
+                (valueChange)="changedStudyType($event)"></app-dropdown>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

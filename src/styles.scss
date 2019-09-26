@@ -1,0 +1,155 @@
+/* You can add global styles to this file, and also import other style files */
+@import "./styles/yprime-theme.scss";
+@import "./styles/study-table.scss";
+@import "./styles/mixins.scss";
+@import "./styles/variables.scss";
+
+body {
+    background-image: url('assets/images/background-dataswoop-color.svg');
+    background-size: 100vw 100vh;
+    font-family: 'Lato', sans-serif;
+ }
+
+ .mat-form-field-appearance-outline .mat-form-field-infix {
+    @include questionnaire-form-font-family();
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 14px;
+    border-top: 5px;
+ }
+
+ .mat-option-text {
+    font-size: 14px;
+ }
+
+ label,
+ mat-error {
+    @include questionnaire-form-font-family();
+    margin-bottom: 3px;
+    font-size: 12px;
+ }
+
+ .asterik {
+   margin-right: 3px;
+   margin-top: 0px;
+   font-size: 30px;
+   vertical-align: sub;
+   &.s16 {
+      font-size: 16px !important;
+   }
+}
+.asterik:before {
+   content: '\2217';
+   color: $mandatoryKey;
+}
+
+ .disabledText {
+    color: grey;
+ }
+
+ mat-slide-toggle {
+    margin-left: 5px;
+    margin-top: 10px;
+ }
+
+ .mat-form-field-wrapper {
+    padding-bottom: 4px;
+ }
+
+div.body-window {
+   display: flex;
+   flex-wrap: wrap;
+   @include paneled-body;
+}
+
+div.app-window {
+   padding: 0 !important;
+}
+
+div.title-row {
+   padding: 0.75rem 24px 0 10px;
+   border-bottom: 1px solid $yPrime-gray-border;
+}
+
+#body-title {
+   // text-align: center;
+   @include questionnaire-form-font-family();
+}
+
+mat-dialog-container {
+   border: 1px solid #00adee  !important;
+}
+
+.req-message {
+   color: $mandatoryKey;
+   font-size: 12px;
+   font-weight: bolder;
+   float: right;
+   white-space: nowrap;
+   padding-right: 1rem;
+   margin-top: -8px;
+   height: 2rem;
+}
+
+
+.mat-icon-button {
+   color: #2D3F56;
+}
+
+.mat-icon {
+   &.info-cell {
+      transform: scale(.65);
+      cursor: pointer;
+   }
+   &.info-cell:hover {
+      cursor: hand;
+   }
+}
+
+input {
+   line-height: 1.75!important;
+}
+
+input.mat-input-element {
+   margin-top: 0.25em;
+   font-size: 14px;
+}
+
+.mat-select-value {
+   @include questionnaire-form-font-family();
+   font-size: 14px;
+   padding: 3px 2px 2px 2px;
+   line-height: 1.75!important;
+}
+
+.mat-select-arrow-wrapper {
+   display: unset !important;
+}
+
+.mat-expansion-panel-header {
+   padding: 0px 5px 0px 0px !important;
+   @include questionnaire-form-font-family();
+   font-size: 14px !important;
+}
+
+.mat-expansion-panel-body {
+   padding: 1px 5px 1px 3px !important;
+   @include questionnaire-form-font-family();
+   font-size: 14px !important;
+}
+
+.showErrorMessage {
+   color: $validationErrorKey;
+   font-size: 12px !important;
+   font-weight: 400 !important;
+}
+
+.snack-info {
+   background-color: #509C10 !important;
+   color: #fff;
+}
+
+.snack-error {
+   background-color: #EC008C !important;
+   color: #fff;
+}

@@ -1,0 +1,163 @@
+:host /deep/ mat-table.inline-table.subjectInformation mat-header-cell {
+   white-space: nowrap;
+}
+
+:host /deep/ mat-table.inline-table.subjectInformation .mat-column-countries {
+   min-width: 89px;
+   max-width: 89px;
+
+   mat-expansion-panel {
+      min-width: 89px;
+   }
+
+   mat-form-field {
+      width: 89px !important;
+   }
+}
+
+:host /deep/ mat-table.inline-table.subjectInformation .mat-column-suffix,
+:host /deep/ mat-table.inline-table.subjectInformation .mat-column-decimal {
+   min-width: 58px;
+   max-width: 58px;
+
+   mat-form-field {
+      width: 58px !important;
+   }
+}
+
+:host /deep/ div.subjectInformation span.headerCol.min,
+:host /deep/ div.subjectInformation span.headerCol.max,
+:host /deep/ div.subjectInformation span.headerCol.suffix {
+   min-width: 50px;
+   max-width: 50px;
+
+   mat-form-field {
+      width: 50px !important;
+   }
+}
+
+:host /deep/ mat-table.inline-table.subjectInformation .mat-column-min,
+:host /deep/ mat-table.inline-table.subjectInformation .mat-column-max {
+   min-width: 50px;
+   max-width: 50px;
+
+   mat-form-field {
+      width: 50px !important;
+   }
+}
+
+:host /deep/ div.subjectInformation span.headerCol.choices {
+   min-width: 120px;
+   max-width: 120px;
+}
+
+:host /deep/ mat-table.inline-table.subjectInformation .mat-column-choices {
+   min-width: 75px;
+   max-width: 75px;
+}
+
+:host /deep/ div.subjectInformation span.headerCol.businessRuleName,
+:host /deep/ div.subjectInformation span.headerCol.countries {
+   min-width: 174px;
+   max-width: 174px;
+}
+
+:host /deep/ div.subjectInformation span.headerCol.suffix,
+:host /deep/ div.subjectInformation span.headerCol.decimal {
+   min-width: 75px;
+   max-width: 75px;
+}
+
+:host
+   /deep/
+   mat-table.inline-table.subjectInformation
+   .mat-column-disableNumeric {
+   min-width: 120px;
+   max-width: 120px;
+   justify-content: center;
+
+   mat-slide-toggle {
+      margin-top: unset !important;
+   }
+
+   .slider {
+      margin-right: 24px;
+   }
+}
+
+:host /deep/ mat-table.inline-table.subjectInformation .mat-column-name {
+   min-width: 135px;
+   max-width: 135px;
+
+   mat-form-field {
+      width: 135px !important;
+   }
+}
+
+:host
+   /deep/
+   mat-table.inline-table.subjectInformation
+   .mat-column-businessRule {
+   min-width: 115px;
+   max-width: 115px;
+
+   mat-form-field {
+      width: 115px !important;
+   }
+}
+
+:host /deep/ div.subjectInformation span.headerCol.name {
+   min-width: 177px;
+   max-width: 177px;
+
+   mat-form-field {
+      width: 177px !important;
+   }
+}
+
+:host /deep/ mat-table.inline-table.subjectInformation .mat-column-dateFormat {
+   min-width: 110px;
+   max-width: 110px;
+
+   mat-form-field {
+      width: 110px !important;
+   }
+}
+
+:host /deep/ div.subjectInformation span.headerCol.disableNumeric {
+   min-width: 130px;
+   max-width: 130px;
+   justify-content: center;
+   .slider {
+      margin-right: 12px;
+   }
+}
+
+:host /deep/ mat-table.inline-table.subjectInformation .mat-column-actionPanel {
+   margin: 0 !important;
+   padding: 0 !important;
+}
+
+// right left spacing for header row
+:host /deep/ div.subjectInformation span.headerCol:first-of-type,
+:host /deep/ div.subjectInformation div.header-group-row span.choiceType,
+:host /deep/ div.subjectInformation div.addRowHeader span.choiceType {
+   margin-left: 24px !important;
+   min-width: 174px;
+   max-width: 174px;
+}
+
+// The mat-column override for subjectInformations
+:host /deep/ mat-table.inline-table.subjectInformation mat-cell:first-of-type,
+:host
+   /deep/
+   mat-table.inline-table.subjectInformation
+   mat-footer-cell:first-of-type,
+:host
+   /deep/
+   mat-table.inline-table.subjectInformation
+   mat-header-cell:first-of-type {
+   margin-left: 8px !important;
+   min-width: 130px;
+   max-width: 130px;
+}

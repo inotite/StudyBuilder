@@ -1,0 +1,81 @@
+<ng-container [formGroup]="questionnaireTypeForm">
+   <div class="container-fluid" *ngIf="!isIrtStudyType">
+      <div class="row">
+         <div class="col-sm-6">
+            <label i18n for="deviceType"><span class="asterik"></span>Where will this be used</label>
+            <mat-form-field
+               id="selectWhere"
+               name="selectWhere"
+               floatLabel="always"
+               appearance="outline"
+            >
+               <mat-select
+                  id="deviceType"
+                  name="deviceType"
+                  [value]="selectedMapping.deviceType.id"
+                  placeholder="Please Select"
+                  (selectionChange)="deviceTypeChanged($event)"
+                  i18n
+                  formControlName="deviceType"
+                  ngDefaultControl
+               >
+                  <mat-option
+                     *ngFor="let deviceType of filteredQuestionnaireDeviceTypes"
+                     value="{{ deviceType.id }}"
+                     >{{ deviceType.type }}</mat-option
+                  >
+               </mat-select>
+            </mat-form-field>
+         </div>
+         <div
+            class="col-sm-6"
+            *ngIf="
+               !isIrtDeviceType && selectedMapping.deviceType.id != undefined
+            "
+         >
+            <label i18n for="questionnaireTaker"
+            ><span class="asterik"></span>Who will be completing this questionnaire</label
+            >
+            <mat-form-field
+               id="selectWho"
+               floatLabel="always"
+               appearance="outline"
+            >
+               <mat-select
+                  id="questionnaireTaker"
+                  name="questionnaireTaker"
+                  [value]="selectedMapping.questionnaireTaker.id"
+                  placeholder="Please Select"
+                  (selectionChange)="takerChanged($event)"
+                  formControlName="questionnaireTaker"
+                  ngDefaultControl
+               >
+                  <mat-option
+                     *ngFor="let taker of eligbleQuestionnaireTakers"
+                     value="{{ taker.id }}"
+                     >{{ taker.type }}</mat-option
+                  >
+               </mat-select>
+            </mat-form-field>
+            <div class="row">
+               <div class="col-sm-11 form-field remove-margin-padding">
+                  <p class="form-field text-right">
+                     <label
+                        [ngClass]="{ disabledText: !showTraining }"
+                        i18n
+                        for="isTraining"
+                        >Training</label
+                     >
+                     <mat-slide-toggle
+                        id="isTraining"
+                        formControlName="isTraining"
+                        ngDefaultControl
+                     ></mat-slide-toggle>
+                  </p>
+               </div>
+            </div>
+         </div>
+         <mat-divider></mat-divider>
+      </div>
+   </div>
+</ng-container>

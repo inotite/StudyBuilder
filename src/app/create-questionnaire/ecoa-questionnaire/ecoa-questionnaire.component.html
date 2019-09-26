@@ -1,0 +1,179 @@
+<ng-container [formGroup]="ecoaQuestionnaireForm">
+   <div *ngIf="hasQuestionnaireType">
+      <div class="row large-row-top-margin">
+         <div class="col-md-6">
+            <p class="row">
+               <label i18n for="visibilityRule"
+                  >Questionnaire visible when</label
+               >
+               <mat-form-field floatLabel="always" appearance="outline">
+                  <mat-select
+                     id="visibilityRule"
+                     name="visibilityRule"
+                     placeholder="Please select"
+                     formControlName="visibilityRule"
+                  >
+                     <mat-option
+                        *ngFor="let businessRuleItem of businessRules"
+                        [value]="businessRuleItem.name"
+                        >{{ businessRuleItem.name }}</mat-option
+                     >
+                  </mat-select>
+               </mat-form-field>
+            </p>
+            <div
+               class="form-control form-control-radio-button"
+               [ngClass]="displayFieldCss('visibleBusinessRuleResult')"
+            >
+               <p class="row extra-small-row-top-margin">
+                  <mat-radio-group
+                     formControlName="visibleBusinessRuleResult"
+                     id="visibleBusinessRuleResult"
+                     class="mat-radio-label-content"
+                  >
+                     <mat-radio-button value="True" i18n
+                        >is True</mat-radio-button
+                     >
+                     <mat-radio-button value="False" i18n
+                        >is False</mat-radio-button
+                     >
+                  </mat-radio-group>
+               </p>
+            </div>
+         </div>
+
+         <div class="col-md-6">
+            <p class="row">
+               <label i18n for="enabledBusinessRule"
+                  >Questionnaire enabled when</label
+               >
+               <mat-form-field floatLabel="always" appearance="outline">
+                  <mat-select
+                     id="enabledBusinessRule"
+                     name="enabledBusinessRule"
+                     placeholder="Please select"
+                     formControlName="enabledBusinessRule"
+                  >
+                     <mat-option
+                        *ngFor="let businessRuleItem of businessRules"
+                        [value]="businessRuleItem.name"
+                        >{{ businessRuleItem.name }}</mat-option
+                     >
+                  </mat-select>
+               </mat-form-field>
+            </p>
+            <div
+               class="form-control form-control-radio-button"
+               [ngClass]="displayFieldCss('enabledBusinessRuleResult')"
+            >
+               <p class="row extra-small-row-top-margin">
+                  <mat-radio-group
+                     formControlName="enabledBusinessRuleResult"
+                     id="enabledBusinessRuleResult"
+                     class="mat-radio-label-content"
+                  >
+                     <mat-radio-button value="True" i18n
+                        >is True</mat-radio-button
+                     >
+                     <mat-radio-button value="False" i18n
+                        >is False</mat-radio-button
+                     >
+                  </mat-radio-group>
+               </p>
+            </div>
+         </div>
+      </div>
+      <mat-divider></mat-divider>
+      <div *ngIf="isHandheld" class="row large-row-top-margin">
+         <div class="mat-form-field col-md-12">
+            <label class="mat-form-field" i18n for="previousDaysEntry"
+               >Allow retrospective entry</label
+            >
+            <mat-form-field
+               floatLabel="always"
+               class="col-md-2"
+               appearance="outline"
+            >
+               <mat-label i18n>Days</mat-label>
+               <input
+                  matInput
+                  id="previousDaysEntry"
+                  name="previousDaysEntry"
+                  type="number"
+                  formControlName="previousDaysEntry"
+                  ngDefaultControl
+                  (keypress)="
+                     positiveInteger(
+                        $event,
+                        1,
+                        this.ecoaQuestionnaireForm.controls['previousDaysEntry']
+                     )
+                  "
+               />
+            </mat-form-field>
+            <label i18n for="promptIncompletePagesOnSave"
+               >Force completion of missed entries</label
+            >
+            <mat-slide-toggle
+               formControlName="promptIncompletePagesOnSave"
+            ></mat-slide-toggle>
+         </div>
+      </div>
+      <div *ngIf="isHandheld" class="row">
+         <div class="mat-form-field col-md-9">
+            <label i18n for="allowEdit"
+               >Allow user to edit completed questionnaire responses</label
+            >
+            <mat-slide-toggle
+               id="allowEdit"
+               name="allowEdit"
+               formControlName="allowEdit"
+               (blur)="this.focusPreviousDaysEdit()"
+               ngDefaultControl
+               >{{
+                  ecoaQuestionnaireForm.controls['allowEdit'] | onOff
+               }}</mat-slide-toggle
+            >
+            <mat-form-field
+               floatLabel="always"
+               class="col-md-2"
+               appearance="outline"
+            >
+               <mat-label i18n>Days</mat-label>
+               <input
+                  matInput
+                  id="previousDaysEdit"
+                  name="previousDaysEdit"
+                  type="number"
+                  #previousDaysEdit
+                  formControlName="previousDaysEdit"
+                  (keypress)="
+                     positiveInteger(
+                        $event,
+                        1,
+                        this.ecoaQuestionnaireForm.controls['previousDaysEdit']
+                     )
+                  "
+               />
+            </mat-form-field>
+         </div>
+      </div>
+      <div class="row" *ngIf="isTablet">
+         <span class="mat-form-field col-md-9">
+            <label i18n for="displaySummaryScore"
+               >Allow site user to review completed questionnaire</label
+            >
+            <mat-slide-toggle
+               id="displaySummaryScore"
+               name="displaySummaryScore"
+               formControlName="displaySummaryScore"
+               ngDefaultControl
+               >{{
+                  questionnaire.displaySummaryScore | onOff
+               }}</mat-slide-toggle
+            >
+         </span>
+      </div>
+      <mat-divider></mat-divider>
+   </div>
+</ng-container>

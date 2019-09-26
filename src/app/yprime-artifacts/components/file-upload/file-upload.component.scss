@@ -1,0 +1,18 @@
+.file-upload input
+{
+    display: none;
+}
+
+.file-upload img
+{
+    width: 109px;
+    height: 28px;
+    cursor: pointer;
+}
+
+.file-upload-error {
+    border-color: #ec008c; 
+    border-style: solid;  
+    border-width: 2px;
+    border-radius: 4px;
+}

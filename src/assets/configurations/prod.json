@@ -1,0 +1,7 @@
+{
+   "name": "PROD",
+   "production": true,
+   "settings": {
+      "apiRoot": "https://studybuilderservices.eclinicalcloud.net/v1/"
+   }
+}

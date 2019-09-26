@@ -1,0 +1,29 @@
+@import '../../../styles/mixins.scss';
+
+.field-wrapper {
+   margin: 0 24px;
+}
+
+mat-form-field {
+   @include questionnaire-form-mat-field();
+}
+
+.rich-text-button {
+   display: block;
+}
+
+.remove-margin-padding {
+   margin: 0px;
+   padding: 0px;
+}
+
+mat-select {
+   @include questionnaire-form-font-size();
+}
+
+#trainingLabel {
+   font-size: 14px;
+}
+label {
+   @include questionnaire-form-label();
+}

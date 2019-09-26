@@ -1,0 +1,104 @@
+// material table customization for study builder
+// scope is app level
+@import "./variables.scss";
+@import "./mixins.scss";
+
+.mat-row:hover {
+    background: $matRowHoverBackGroundColor;
+    cursor: pointer;
+ }
+
+ .inline-table {
+   height: 45vh;
+   overflow: auto;
+ }
+ 
+ div.header-group-row span.headerCol,
+ div.addRowHeader span.headerCol {
+    margin-right: 24px;
+ }
+
+ .ActionPanelEdit span {
+   margin:0 !important;
+   padding: 0px !important;
+ }
+
+ .mat-row {
+    border-style: none;
+    padding-bottom: 5px;
+ }
+
+ mat-table mat-header-row {
+   background: #f4fcff !important;
+   height: 56px;
+ }
+ 
+
+ mat-header-cell, mat-cell {
+    margin: 0 12px;    
+ }
+
+ mat-header-cell {
+    display: inline-block !important;
+    padding: 16px 0;
+
+    button:focus {
+       outline: unset !important;
+    }
+ }
+
+ .mat-header-cell {
+   font-weight: bolder !important;
+   font-size: 16px !important; 
+ }
+ 
+.pager {
+    margin-top:2px;
+}
+
+.mat-row:hover {
+   background: rgba(65, 214, 182, 0.1);
+   border-top:#44D7B6 1px solid;
+   border-bottom:#44D7B6 1px solid;
+   margin: -1px 0 -1px 0;
+   cursor: pointer;
+}
+
+.mat-paginator{
+   background: transparent;
+   @include questionnaire-form-font-family();
+}
+
+.mat-dialog-title, mat-dialog-content p {
+   @include questionnaire-form-font-family();
+   font-weight: 300;
+}
+
+mat-dialog-content p {
+   margin: 0px !important;
+}
+
+.mat-dialog-container {
+   border: #00adee 2px solid !important;
+   background: white;
+   color: rgba(0, 0, 0, 1);
+}
+
+mat-dialog-actions {
+   padding-bottom: 28px !important; 
+}
+
+mat-dialog-content {
+   padding: 12px 34px 12px 34px !important;
+}
+
+.header-group-row {
+   display: flex;
+   align-items: center;
+}
+
+.table-border {
+   padding-top: 24px;
+   border-bottom: solid 2px;
+   border-bottom-color: gray;
+}

@@ -1,0 +1,15 @@
+<div class="row" *ngIf="showIcons">
+  <div id="workflowWrapper" class="col-md-12">
+    <div class="row">
+      <div class="left col-md-9 col-sm-12">
+        <app-home-horizontal-row [title]="studySetupTitle" [items]="studySetupIcons"></app-home-horizontal-row>
+        <app-home-horizontal-row [title]="configureTitle" [items]="configureIcons"></app-home-horizontal-row>
+        <app-home-horizontal-row [title]="documentTitle" [items]="documentIcons" [isLast]="true">
+        </app-home-horizontal-row>
+      </div>
+      <div class="right col-md-3 col-sm-12 col-xs-12">
+        <app-home-vertical-row [title]="customizeTitle" [items]="customizeIcons"></app-home-vertical-row>
+      </div>
+    </div>
+  </div>
+</div>

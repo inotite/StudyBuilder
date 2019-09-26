@@ -1,0 +1,6 @@
+export enum QuestionnaireTakerTypes {
+   Caregiver = 'BC109726-B20B-472F-8A9A-EB3D02BEDE9A',
+   Subject = '0223FB2C-2F61-4DBE-804D-1969D691F177',
+   Clinician = '9555575C-6B75-423D-BAF0-C279E0D3DC74',
+   SubjectAndOrCareGiver = '792CDA4A-8117-4A0A-A9C4-ABEE90B3BFC7'
+}

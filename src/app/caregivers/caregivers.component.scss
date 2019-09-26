@@ -1,0 +1,19 @@
+::ng-deep mat-table.inline-table.caregiver mat-cell:first-of-type, 
+::ng-deep mat-table.inline-table.caregiver mat-footer-cell:first-of-type, 
+::ng-deep mat-table.inline-table.caregiver mat-header-cell:first-of-type {
+    margin-left: 347px!important;
+    margin-right: 118px;
+    min-width: 350px;
+    max-width: 350px;
+
+    mat-form-field {
+        width: 300px !important;
+    }
+}
+
+::ng-deep div.caregiver span.headerCol:first-of-type {
+    padding-left: 24px;
+    margin-left: 347px!important;
+    margin-right: 0px !important;
+    max-width: 480px;
+}

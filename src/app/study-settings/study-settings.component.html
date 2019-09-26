@@ -1,0 +1,13 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2">
+            <app-study-settings-left-panel (categoryLinkSelected)="onCategoryLinkSelected($event)"></app-study-settings-left-panel>    
+        </div>
+        <div class="col-md-8">
+            <app-study-settings-middle-panel [studySettings]="studySettings"></app-study-settings-middle-panel>
+        </div>
+        <div class="col-md-2">
+            <app-study-settings-right-panel></app-study-settings-right-panel>
+        </div>
+    </div>
+</div>

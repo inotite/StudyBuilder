@@ -1,0 +1,7 @@
+{
+   "name": "VAL",
+   "production": true,
+   "settings": {
+      "apiRoot": "https://val-studybuilderservices.eclinicalcloud.net/v1/"
+   }
+}
